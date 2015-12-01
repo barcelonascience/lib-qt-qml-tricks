@@ -181,7 +181,7 @@ FocusScope {
             }
             anchors.fill: parent;
             onPositionChanged: {
-                flickableItem.contentY = (flickableItem.contentHeight * handleVertic.y / grooveVertic.height);
+                flickableItem.contentY = ((flickableItem.contentHeight - flickableItem.height) * handleVertic.y / grooveVertic.drag.maximumY);
             }
 
             Rectangle {
@@ -201,7 +201,7 @@ FocusScope {
 
                 Binding on y {
                     when: (flickableItem && !grooveVertic.pressed);
-                    value: (grooveVertic.height * flickableItem.visibleArea.yPosition);
+                    value: (grooveVertic.drag.maximumY * flickableItem.visibleArea.yPosition);
                 }
                 Binding on height {
                     when: (flickableItem && !grooveVertic.pressed);

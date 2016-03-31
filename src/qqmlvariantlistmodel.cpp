@@ -144,10 +144,13 @@ bool QQmlVariantListModel::isEmpty () const
 */
 void QQmlVariantListModel::clear ()
 {
-    beginRemoveRows (NO_PARENT, 0, count () -1);
-    m_privateImpl->m_items.clear ();
-    endRemoveRows ();
-    m_privateImpl->updateCounter ();
+    if(count()>0)
+    {
+        beginRemoveRows (NO_PARENT, 0, count () -1);
+        m_privateImpl->m_items.clear ();
+        endRemoveRows ();
+        m_privateImpl->updateCounter ();
+    }
 }
 
 /*!
